@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a new post</title>
+
+    <meta th:replace="fragments/static.html :: bootstrap">
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+<div th:replace="fragments/nav.html :: navbar"></div>
+
+<div class="container">
+    <p th:text="'You are logged in as ' + ${#authentication.getPrincipal().getUsername()}"></p>
+    <p class="h4 mb-4">Save post</p>
+
+<form action="#" th:action="@{/posts/save}" th:object="${post}" method="POST">
+
+    <input type="hidden" th:field="*{id}" />
+
+    <input class="form-control mb-4 col-4" type="text" th:field="*{title}" placeholder="Title" />
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error">Email Error</p>
+
+    <textarea class="form-control mb-4 col-4" th:field="*{content}" placeholder="content" />
+    <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="error">Email Error</p>
+
+    <button class="btn btn-info col-2" type="submit">Submit</button>
+
+
+</form>
+</div>
+
+
+
+</body>
+</html>

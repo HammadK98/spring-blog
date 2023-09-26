@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+
+    <meta th:replace="fragments/static.html :: bootstrap">
+</head>
+<body>
+<div th:replace="fragments/nav.html :: navbar"></div>
+<div class="container">
+    <h1>All users</h1>
+    <hr>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempUser : ${theUsers}">
+            <td th:text="${tempUser.username}" />
+            <td th:text="${tempUser.email}" />
+            <td th:text="${tempUser.name}" />
+            <td>
+                <a class="btn btn-info btn-sm" th:href="@{/users(userId=${tempUser.username})}">View</a>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+
+</body>
+</html>

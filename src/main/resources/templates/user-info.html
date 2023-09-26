@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+
+    <meta th:replace="fragments/static.html :: bootstrap">
+
+</head>
+<body>
+    <div th:replace="fragments/nav.html :: navbar"></div>
+    <div class="container">
+
+        <p th:text="'You are logged in as ' + ${#authentication.getPrincipal().getUsername()}"></p>
+        <h1 th:text="${user.username}"></h1>
+
+        <hr>
+
+        <div>
+            <strong th:text="'Username: ' + ${user.username}"></strong><br>
+            <strong th:text="'Name: ' + ${user.name}"></strong><br>
+            <strong th:text="'email: ' + ${user.email}"></strong><br>
+        </div>
+        <hr>
+
+        <div th:if="${(user.posts.size() != 0)}">
+            <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Post title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="tempPost : ${user.posts}">
+                    <td th:text="${tempPost.title}" />
+                <td>
+                    <a class="btn btn-info btn-sm" th:href="@{/posts/post(postId=${tempPost.id})}">View</a>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    </div>
+
+
+
+</body>
+</html>
