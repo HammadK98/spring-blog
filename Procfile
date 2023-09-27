@@ -1,1 +1,1 @@
-java $JAVA_OPTS -jar target/*.jar
+java -jar target/*.jar
