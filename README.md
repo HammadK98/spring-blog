@@ -15,6 +15,6 @@ A blog system with CRUD features made using Spring MVC. Access to features is pr
 
 ## Production
 
-A sample aplication is hosted [here](https://spring-blog-ed2c389ef26f.herokuapp.com/showFormForLogin). All features are provided for users to play with. 
+A sample aplication is hosted [here](http://springboot.hakhan.me/showFormForLogin). All features are provided for users to play with. 
 
  
